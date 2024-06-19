@@ -5,14 +5,17 @@
 </head>
 <body>
     <button id="downloadButton">Download PDF</button>
-<script>
+    <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
-            fetch('/macros/s/AKfycbx27AFcR5TkwfyuzF8_H3AiA4IgZszW-gun9UruULOBJVNLcBYsXkw87SkKJqFc8NLWsA/exec')
-               .then(response => response.text())
-               .then(data => {
-                    console.log(data); // You might want to handle the downloaded PDF here
+            // Use CORS Anywhere to bypass CORS policy
+            fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbx27AFcR5TkwfyuzF8_H3AiA4IgZszW-gun9UruULOBJVNLcBYsXkw87SkKJqFc8NLWsA/exec')
+              .then(response => response.text()) // Assuming the response is text; adjust if needed
+              .then(data => {
+                    console.log(data); // Handle the downloaded PDF here
+                    // Since the PDF is likely binary data, you might want to display it in a new window or save it locally
+                    // Example: window.open(URL.createObjectURL(new Blob([data], {type: 'application/pdf'})));
                 })
-               .catch(error => console.error('Error:', error));
+              .catch(error => console.error('Error:', error));
         });
     </script>
 </body>
