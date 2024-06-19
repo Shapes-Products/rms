@@ -1,25 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Download PDF</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receivable Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pdf-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .pdf-button:hover {
+            background-color: #0056b3;
+        }
+        .sheet-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <button id="downloadButton">Download PDF</button>
-    <script>
-        document.getElementById('downloadButton').addEventListener('click', function() {
-            fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwZgWvMXZN5NkiXLNeWvdwdVeyMB766Uq0mvzGpXPAgFg3g664AonhtbxXeA4XYHq8Y9A/exec?action=download')
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                  }
-                  return response.text(); // Assuming the response is text; adjust if needed
-              })
-              .then(data => {
-                  console.log(data); // For debugging, check if the response contains any useful data
-                  // The PDF should be opened/downloaded automatically due to the window.open in createPDF()
-              })
-              .catch(error => console.error('Error downloading PDF:', error));
-        });
-    </script>
+    <div class="container">
+        <a class="pdf-button" href="https://script.google.com/a/macros/shapesproducts.in/s/AKfycbzxByM1CixzegaX0dBtMjBYCkQI9OjnChXWwMpiUKBbyRNEcGuxmUvNrLlvddiCnEl0iA/exec?spreadsheetId=1h1KhfcJKnY4vEwUhUzYloog7UCZ8n5aSvTuORsVl77E&sheetName=RMS%28PaymentFollowup%29&range=A1%3AE" target="_blank">Download PDF Report</a>
+        
+        <div class="sheet-container">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTRBIb8bcjF59n9JsHUtYrmh0NFedE02iQf2_yoRcmUnwHIKPROfDgv_Nmnpc3H1NLv_GfUAgv_WIZa/pubhtml?gid=1446791670&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        </div>
+    </div>
 </body>
 </html>
