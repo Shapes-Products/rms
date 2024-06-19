@@ -6,14 +6,14 @@
 <body>
     <button id="downloadButton">Download PDF</button>
 <script>
-document.getElementById('downloadButton').addEventListener('click', function() {
-    fetch('https://script.google.com/macros/s/AKfycbx27AFcR5TkwfyuzF8_H3AiA4IgZszW-gun9UruULOBJVNLcBYsXkw87SkKJqFc8NLWsA/exec')
-      .then(response => response.text())
-      .then(data => {
-            console.log(data); // Handle the downloaded PDF here
-        })
-      .catch(error => console.error('Error:', error));
-});
-</script>
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            fetch('/macros/s/AKfycbx27AFcR5TkwfyuzF8_H3AiA4IgZszW-gun9UruULOBJVNLcBYsXkw87SkKJqFc8NLWsA/exec')
+               .then(response => response.text())
+               .then(data => {
+                    console.log(data); // You might want to handle the downloaded PDF here
+                })
+               .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
