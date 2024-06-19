@@ -7,22 +7,16 @@
     <button id="downloadButton">Download PDF</button>
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
-            fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbybSY9PwW8mJ0k6MoUyukuo3gyWsZbOzB7mCKstM9vKV1TXqqz3BkDxwZW5HQxb2zhk1w/exec')
+            fetch('https://script.google.com/macros/s/AKfycbwZgWvMXZN5NkiXLNeWvdwdVeyMB766Uq0mvzGpXPAgFg3g664AonhtbxXeA4XYHq8Y9A/exec?action=download')
               .then(response => {
                   if (!response.ok) {
                       throw new Error('Network response was not ok');
                   }
-                  return response.blob();
+                  return response.text(); // Assuming the response is text; adjust if needed
               })
-              .then(blob => {
-                  // Create blob link to download
-                  const url = window.URL.createObjectURL(new Blob([blob]));
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = 'downloaded.pdf';
-                  document.body.appendChild(a);
-                  a.click();
-                  a.remove();  // Clean up
+              .then(data => {
+                  console.log(data); // For debugging, check if the response contains any useful data
+                  // The PDF should be opened/downloaded automatically due to the window.open in createPDF()
               })
               .catch(error => console.error('Error downloading PDF:', error));
         });
